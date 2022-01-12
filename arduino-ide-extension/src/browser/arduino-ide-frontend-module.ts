@@ -269,6 +269,11 @@ import {
   IDEUpdaterServicePath,
 } from '../common/protocol/ide-updater-service';
 import { IDEUpdaterServiceClientImpl } from './ide-updater/ide-updater-service-client-impl';
+import {
+  IDEUpdaterDialog,
+  IDEUpdaterDialogProps,
+  IDEUpdaterDialogWidget,
+} from './dialogs/ide-updater/ide-updater-dialog';
 
 const ElementQueries = require('css-element-queries/src/ElementQueries');
 
@@ -612,6 +617,7 @@ export default new ContainerModule((bind, unbind, isBound, rebind) => {
   Contribution.configure(bind, Debug);
   Contribution.configure(bind, Sketchbook);
   Contribution.configure(bind, UploadFirmware);
+  // Contribution.configure(bind, IDEUpdater);
   Contribution.configure(bind, UploadCertificate);
   Contribution.configure(bind, BoardSelection);
   Contribution.configure(bind, OpenRecentSketch);
@@ -761,6 +767,12 @@ export default new ContainerModule((bind, unbind, isBound, rebind) => {
   bind(UploadCertificateDialog).toSelf().inSingletonScope();
   bind(UploadCertificateDialogProps).toConstantValue({
     title: 'UploadCertificate',
+  });
+
+  bind(IDEUpdaterDialogWidget).toSelf().inSingletonScope();
+  bind(IDEUpdaterDialog).toSelf().inSingletonScope();
+  bind(IDEUpdaterDialogProps).toConstantValue({
+    title: 'IDEUpdater',
   });
 
   bind(UserFieldsDialogWidget).toSelf().inSingletonScope();
